@@ -15,23 +15,23 @@ public class ContactCreationTests {
     wd = new FirefoxDriver(new FirefoxOptions().setBinary("D:\\Program Files (x86)\\firefox.exe"));
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("https://localhost/addressbook/index.php");
-    login();
+    login("admin", "secret");
   }
 
-  private void login() {
+  private void login(String username, String password) {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys("admin");
+    wd.findElement(By.name("user")).sendKeys(username);
     wd.findElement(By.name("pass")).click();
     wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys("secret");
+    wd.findElement(By.name("pass")).sendKeys(password);
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
   @Test
   public void testContactCreationTests() throws Exception {
     gotoContactPage();
-    fillContactForm();
+    fillContactForm(new ContactData("name", "last name", "1234567", "test@google.com"));
     enterContactCreation();
     returnToHomePage();
   }
@@ -44,21 +44,21 @@ public class ContactCreationTests {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  private void fillContactForm() {
+  private void fillContactForm(ContactData contactData) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys("name");
+    wd.findElement(By.name("firstname")).sendKeys(contactData.getName());
     wd.findElement(By.name("theform")).click();
     wd.findElement(By.name("middlename")).click();
     wd.findElement(By.name("lastname")).click();
     wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys("last name");
+    wd.findElement(By.name("lastname")).sendKeys(contactData.getLast_name());
     wd.findElement(By.name("mobile")).click();
     wd.findElement(By.name("mobile")).clear();
-    wd.findElement(By.name("mobile")).sendKeys("1234567");
+    wd.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys("test@google.com");
+    wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
   }
 
   private void gotoContactPage() {
