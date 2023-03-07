@@ -67,7 +67,6 @@ public class GroupCreationTests {
 	}
 
 	@AfterMethod(alwaysRun = true)
-
 	public void tearDown() throws Exception {
 		wd.quit();
 	}
