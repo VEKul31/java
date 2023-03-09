@@ -60,6 +60,35 @@ public class TestBase {
 		wd.findElement(By.linkText("groups")).click();
 	}
 
+	protected void returnToHomePage() {
+		wd.findElement(By.linkText("home page")).click();
+	}
+
+	protected void enterContactCreation() {
+		wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+	}
+
+	protected void fillContactForm(ContactData contactData) {
+		wd.findElement(By.name("firstname")).click();
+		wd.findElement(By.name("firstname")).clear();
+		wd.findElement(By.name("firstname")).sendKeys(contactData.getName());
+		wd.findElement(By.name("theform")).click();
+		wd.findElement(By.name("middlename")).click();
+		wd.findElement(By.name("lastname")).click();
+		wd.findElement(By.name("lastname")).clear();
+		wd.findElement(By.name("lastname")).sendKeys(contactData.getLast_name());
+		wd.findElement(By.name("mobile")).click();
+		wd.findElement(By.name("mobile")).clear();
+		wd.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
+		wd.findElement(By.name("email")).click();
+		wd.findElement(By.name("email")).clear();
+		wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
+	}
+
+	protected void gotoContactPage() {
+		wd.findElement(By.linkText("add new")).click();
+	}
+
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() throws Exception {
 		wd.quit();
