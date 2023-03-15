@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,9 +11,9 @@ public class ContactDeletionTests extends TestBase{
 
 	@BeforeMethod
 	public void ensurePreconditions() {
-		app.getNavigationHelper().gotoHomePage();
+		app.goTo().gotoHomePage();
 		if (! app.getContactHelper().isThereAContact()) {
-			app.getNavigationHelper().gotoContactPage();
+			app.goTo().gotoContactPage();
 			app.getContactHelper().createContact(new ContactData("name", "last name", "1234567", "test@google.com", null));
 		}
 	}
@@ -25,7 +24,7 @@ public class ContactDeletionTests extends TestBase{
 		int index = before.size() - 1;
 		app.getContactHelper().selectContact(index);
 		app.getContactHelper().deleteSelectedContacts();
-		app.getNavigationHelper().gotoHomePage();
+		app.goTo().gotoHomePage();
 		List<ContactData> after = app.getContactHelper().getContactList();
 		Assert.assertEquals(after.size(), index);
 
