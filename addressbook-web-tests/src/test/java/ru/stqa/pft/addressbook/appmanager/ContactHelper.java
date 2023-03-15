@@ -8,7 +8,9 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -42,13 +44,17 @@ public class ContactHelper extends HelperBase {
 		wd.findElements(By.name("selected[]")).get(index).click();
 	}
 
+	public void selectContactById(int id) {
+		wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+	}
+
 	public void deleteSelectedContacts() {
 		click(By.xpath("//input[@value='Delete']"));
 		wd.switchTo().alert().accept();
 	}
 
-	public void initContactModification(int index) {
-		wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
+	public void initContactModification(int id) {
+		wd.findElement(By.xpath("//img[@alt='Edit']")).click();
 	}
 
 	public void updateContactModification() {
@@ -62,9 +68,9 @@ public class ContactHelper extends HelperBase {
 		returnToHomePage();
 	}
 
-	public void modify(int index, ContactData contact) {
-		selectContact(index);
-		initContactModification(index);
+	public void modify(ContactData contact) {
+		selectContactById(contact.getId());
+		initContactModification(contact.getId());
 		fillContactForm(contact, false);
 		updateContactModification();
 		returnToHomePage();
@@ -72,6 +78,11 @@ public class ContactHelper extends HelperBase {
 
 	public void delete(int index) {
 		selectContact(index);
+		deleteSelectedContacts();
+	}
+
+	public void delete(ContactData contact) {
+		selectContactById(contact.getId());
 		deleteSelectedContacts();
 	}
 
@@ -94,4 +105,17 @@ public class ContactHelper extends HelperBase {
 		}
 		return contacts;
 	}
+
+	public Set<ContactData> all() {
+		Set<ContactData> contacts = new HashSet<ContactData>();
+		List<WebElement> elements = wd.findElements(By.name("entry"));
+		for (WebElement element : elements) {
+			String name = element.getText();
+			String[] components = name.split(" ");
+			int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+			contacts.add(new ContactData().withId(id).withName(components[1]).withLastName(components[0]));
+		}
+		return contacts;
+	}
+
 }
