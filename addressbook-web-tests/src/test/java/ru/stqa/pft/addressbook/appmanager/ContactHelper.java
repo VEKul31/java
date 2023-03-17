@@ -111,10 +111,12 @@ public class ContactHelper extends HelperBase {
 		Contacts contacts = new Contacts();
 		List<WebElement> elements = wd.findElements(By.name("entry"));
 		for (WebElement element : elements) {
-			String name = element.getText();
-			String[] components = name.split(" ");
 			int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-			contacts.add(new ContactData().withId(id).withName(components[1]).withLastName(components[0]));
+			String lastName = element.findElement(By.xpath("./td[2]")).getText();
+			String name = element.findElement(By.xpath("./td[3]")).getText();
+			//String name = element.getText();
+			//String[] components = name.split(" ");
+			contacts.add(new ContactData().withId(id).withName(name).withLastName(lastName));
 		}
 		return contacts;
 	}
