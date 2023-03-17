@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends HelperBase {
 
@@ -114,11 +115,16 @@ public class ContactHelper extends HelperBase {
 			int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
 			String lastName = element.findElement(By.xpath("./td[2]")).getText();
 			String name = element.findElement(By.xpath("./td[3]")).getText();
-			//String name = element.getText();
-			//String[] components = name.split(" ");
 			contacts.add(new ContactData().withId(id).withName(name).withLastName(lastName));
 		}
 		return contacts;
 	}
 
+	public void homePage() {
+		wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		if (isElementPresent(By.cssSelector("div.msgbox"))) {
+			click(By.linkText("home"));
+		}
+
+	}
 }
