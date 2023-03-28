@@ -8,10 +8,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends HelperBase {
@@ -41,10 +38,6 @@ public class ContactHelper extends HelperBase {
 		}
 	}
 
-
-	public void selectContact(int index) {
-		wd.findElements(By.name("selected[]")).get(index).click();
-	}
 
 	public void selectContactById(int id) {
 		wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
@@ -80,10 +73,6 @@ public class ContactHelper extends HelperBase {
 		returnToHomePage();
 	}
 
-	public void delete(int index) {
-		selectContact(index);
-		deleteSelectedContacts();
-	}
 
 	public void delete(ContactData contact) {
 		selectContactById(contact.getId());
@@ -97,18 +86,6 @@ public class ContactHelper extends HelperBase {
 
 	public int getContactCount() {
 		return wd.findElements(By.name("selected[]")).size();
-	}
-
-	public List<ContactData> list() {
-		List<ContactData> contacts = new ArrayList<ContactData>();
-		List<WebElement> elements = wd.findElements(By.name("entry"));
-		for (WebElement element : elements) {
-			String name = element.getText();
-			String[] components = name.split(" ");
-			int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-			contacts.add(new ContactData().withId(id).withName(components[1]).withLastName(components[0]));
-		}
-		return contacts;
 	}
 
 	private Contacts contactCache = null;
