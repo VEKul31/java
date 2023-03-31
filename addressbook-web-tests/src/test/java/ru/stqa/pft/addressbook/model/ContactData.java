@@ -7,6 +7,7 @@ public class ContactData {
 	private int id  = Integer.MAX_VALUE;
 	private String name;
 	private String lastName;
+	private String allPhones;
 	private String homePhone;
 	private String mobilePhone;
 	private String workPhone;
@@ -23,6 +24,10 @@ public class ContactData {
 
 	public String getLastName() {
 		return lastName;
+	}
+
+	public String getAllPhones() {
+		return allPhones;
 	}
 
 	public String getHomePhone() {
@@ -57,6 +62,10 @@ public class ContactData {
 
 	public ContactData withLastName(String lastName) {
 		this.lastName = lastName;
+		return this;
+	}
+	public ContactData withAllPhones(String allPhones) {
+		this.allPhones = allPhones;
 		return this;
 	}
 
@@ -112,6 +121,5 @@ public class ContactData {
 					", lastName='" + lastName + '\'' +
 					'}';
 	}
-
 
 }
