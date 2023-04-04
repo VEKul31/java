@@ -1,0 +1,23 @@
+[
+  {
+    "name": "test 0",
+    "lastName": "testov 0",
+    "address": "Street 0",
+    "email": "Street 0",
+    "mobilePhone": "+123 0"
+  },
+  {
+    "name": "test 1",
+    "lastName": "testov 1",
+    "address": "Street 1",
+    "email": "Street 1",
+    "mobilePhone": "+123 1"
+  },
+  {
+    "name": "test 2",
+    "lastName": "testov 2",
+    "address": "Street 2",
+    "email": "Street 2",
+    "mobilePhone": "+123 2"
+  }
+]
