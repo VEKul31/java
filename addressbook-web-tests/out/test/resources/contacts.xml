@@ -3,21 +3,33 @@
     <name>test 0</name>
     <lastName>testov 0</lastName>
     <address>Street 0</address>
-    <email>Street 0</email>
-    <mobilePhone>+123 0</mobilePhone>
+    <email>Sev0@yandex.ru</email>
+    <email2>Sev0@mail.ru</email2>
+    <email3>Sev0@google.com</email3>
+    <homePhone>+8120</homePhone>
+    <mobilePhone>+70</mobilePhone>
+    <workPhone>+8120</workPhone>
   </contact>
   <contact>
     <name>test 1</name>
     <lastName>testov 1</lastName>
     <address>Street 1</address>
-    <email>Street 1</email>
-    <mobilePhone>+123 1</mobilePhone>
+    <email>Sev1@yandex.ru</email>
+    <email2>Sev1@mail.ru</email2>
+    <email3>Sev1@google.com</email3>
+    <homePhone>+8121</homePhone>
+    <mobilePhone>+71</mobilePhone>
+    <workPhone>+8121</workPhone>
   </contact>
   <contact>
     <name>test 2</name>
     <lastName>testov 2</lastName>
     <address>Street 2</address>
-    <email>Street 2</email>
-    <mobilePhone>+123 2</mobilePhone>
+    <email>Sev2@yandex.ru</email>
+    <email2>Sev2@mail.ru</email2>
+    <email3>Sev2@google.com</email3>
+    <homePhone>+8122</homePhone>
+    <mobilePhone>+72</mobilePhone>
+    <workPhone>+8122</workPhone>
   </contact>
 </list>

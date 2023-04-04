@@ -20,12 +20,16 @@ public class ContactData {
 	private String allEmails;
 	@Expose
 	private String email;
+	@Expose
 	private String email2;
+	@Expose
 	private String email3;
 	private String allPhones;
+	@Expose
 	private String homePhone;
 	@Expose
 	private String mobilePhone;
+	@Expose
 	private String workPhone;
 	private String group;
 

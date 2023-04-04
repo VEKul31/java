@@ -4,20 +4,32 @@
     "lastName": "testov 0",
     "address": "Street 0",
     "email": "Sev0@yandex.ru",
-    "mobilePhone": "+1230"
+    "email2": "Sev0@mail.ru",
+    "email3": "Sev0@google.com",
+    "homePhone": "+8120",
+    "mobilePhone": "+70",
+    "workPhone": "+8120"
   },
   {
     "name": "test 1",
     "lastName": "testov 1",
     "address": "Street 1",
     "email": "Sev1@yandex.ru",
-    "mobilePhone": "+1231"
+    "email2": "Sev1@mail.ru",
+    "email3": "Sev1@google.com",
+    "homePhone": "+8121",
+    "mobilePhone": "+71",
+    "workPhone": "+8121"
   },
   {
     "name": "test 2",
     "lastName": "testov 2",
     "address": "Street 2",
     "email": "Sev2@yandex.ru",
-    "mobilePhone": "+1232"
+    "email2": "Sev2@mail.ru",
+    "email3": "Sev2@google.com",
+    "homePhone": "+8122",
+    "mobilePhone": "+72",
+    "workPhone": "+8122"
   }
 ]

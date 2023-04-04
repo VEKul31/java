@@ -6,6 +6,7 @@ import com.beust.jcommander.ParameterException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
+import org.openqa.selenium.By;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
@@ -85,9 +86,11 @@ public class ContactDataGenerator {
 		List<ContactData> contacts = new ArrayList<ContactData>();
 		for (int i = 0; i < count;i++) {
 			contacts.add(new ContactData().withName(String.format("test %s", i)).withLastName(String.format("testov %s", i))
-						.withAddress(String.format("Street %s", i)).withEmail(String.format("Sev%s@yandex.ru", i))
-						.withMobilePhone(String.format("+123%s", i)));
+						.withAddress(String.format("Street %s", i)).withEmail(String.format("Sev%s@yandex.ru", i)).withEmail2(String.format("Sev%s@mail.ru", i))
+						.withEmail3(String.format("Sev%s@google.com", i)).withHomePhone(String.format("+812%s", i)).withMobilePhone(String.format("+7%s", i))
+						.withWorkPhone(String.format("+812%s", i)));
 		}
 		return contacts;
 	}
 }
+

@@ -46,7 +46,7 @@ public class GroupCreationTests extends TestBase {
 		}
 		Gson gson = new Gson();
 		List<GroupData> groups = gson.fromJson(json, new TypeToken<List<GroupData>>(){}.getType());
-		return  groups.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+		return groups.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
 	}
 
 	@Test(dataProvider = "validGroupsFromJson")
