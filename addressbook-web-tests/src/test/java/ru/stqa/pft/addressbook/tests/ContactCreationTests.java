@@ -2,6 +2,7 @@ package ru.stqa.pft.addressbook.tests;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -56,7 +57,7 @@ public class ContactCreationTests extends TestBase {
 			json += line;
 			line = reader.readLine();
 		}
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType());
 		return contacts.stream().map((c) -> new Object[] {c}).collect(Collectors.toList()).iterator();
 	}
