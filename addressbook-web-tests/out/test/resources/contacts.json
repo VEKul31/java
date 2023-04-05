@@ -10,29 +10,5 @@
     "mobilePhone": "+70",
     "workPhone": "+8120",
     "group": "test 0"
-  },
-  {
-    "name": "test 1",
-    "lastName": "testov 1",
-    "address": "Street 1",
-    "email": "Sev1@yandex.ru",
-    "email2": "Sev1@mail.ru",
-    "email3": "Sev1@google.com",
-    "homePhone": "+8121",
-    "mobilePhone": "+71",
-    "workPhone": "+8121",
-    "group": "test 1"
-  },
-  {
-    "name": "test 2",
-    "lastName": "testov 2",
-    "address": "Street 2",
-    "email": "Sev2@yandex.ru",
-    "email2": "Sev2@mail.ru",
-    "email3": "Sev2@google.com",
-    "homePhone": "+8122",
-    "mobilePhone": "+72",
-    "workPhone": "+8122",
-    "group": "test 2"
   }
 ]
