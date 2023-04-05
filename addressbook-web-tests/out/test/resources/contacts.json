@@ -8,7 +8,8 @@
     "email3": "Sev0@google.com",
     "homePhone": "+8120",
     "mobilePhone": "+70",
-    "workPhone": "+8120"
+    "workPhone": "+8120",
+    "group": "test 0"
   },
   {
     "name": "test 1",
@@ -19,7 +20,8 @@
     "email3": "Sev1@google.com",
     "homePhone": "+8121",
     "mobilePhone": "+71",
-    "workPhone": "+8121"
+    "workPhone": "+8121",
+    "group": "test 1"
   },
   {
     "name": "test 2",
@@ -30,6 +32,7 @@
     "email3": "Sev2@google.com",
     "homePhone": "+8122",
     "mobilePhone": "+72",
-    "workPhone": "+8122"
+    "workPhone": "+8122",
+    "group": "test 2"
   }
 ]

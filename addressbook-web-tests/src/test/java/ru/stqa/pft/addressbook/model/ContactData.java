@@ -31,6 +31,7 @@ public class ContactData {
 	private String mobilePhone;
 	@Expose
 	private String workPhone;
+	@Expose
 	private String group;
 
 	private File photo;
