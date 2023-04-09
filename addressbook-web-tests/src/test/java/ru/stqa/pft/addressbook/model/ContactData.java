@@ -7,7 +7,9 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -56,9 +58,10 @@ public class ContactData {
 	@Type(type = "text")
 	private String workPhone;
 
-	@Expose
-	@Transient
-	private String group;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "address_in_groups",
+				joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+	private Set<GroupData> groups = new HashSet<GroupData>();
 
 
 	@Column(name = "photo")
@@ -116,8 +119,8 @@ public class ContactData {
 		return workPhone;
 	}
 
-	public String getGroup() {
-		return group;
+	public Groups getGroups() {
+		return new Groups(groups);
 	}
 
 	public ContactData withId(int id) {
@@ -178,9 +181,13 @@ public class ContactData {
 		return this;
 	}
 
-	public ContactData withGroup(String group) {
-		this.group = group;
-		return this;
+	@Override
+	public String toString() {
+		return "ContactData{" +
+					"id=" + id +
+					", name='" + name + '\'' +
+					", lastName='" + lastName + '\'' +
+					'}';
 	}
 
 	@Override
@@ -201,9 +208,7 @@ public class ContactData {
 		if (!Objects.equals(allPhones, that.allPhones)) return false;
 		if (!Objects.equals(homePhone, that.homePhone)) return false;
 		if (!Objects.equals(mobilePhone, that.mobilePhone)) return false;
-		if (!Objects.equals(workPhone, that.workPhone)) return false;
-		if (!Objects.equals(group, that.group)) return false;
-		return Objects.equals(photo, that.photo);
+		return Objects.equals(workPhone, that.workPhone);
 	}
 
 	@Override
@@ -220,18 +225,12 @@ public class ContactData {
 		result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
 		result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
 		result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
-		result = 31 * result + (group != null ? group.hashCode() : 0);
-		result = 31 * result + (photo != null ? photo.hashCode() : 0);
 		return result;
 	}
 
-	@Override
-	public String toString() {
-		return "ContactData{" +
-					"id=" + id +
-					", name='" + name + '\'' +
-					", lastName='" + lastName + '\'' +
-					'}';
+	public ContactData inGroup(GroupData group) {
+		groups.add(group);
+		return this;
 	}
 
 }

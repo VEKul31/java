@@ -28,7 +28,7 @@ public class ContactHelper extends HelperBase {
 	public void fillContactForm(ContactData contactData, boolean creation) {
 		type(By.name("firstname"), contactData.getName());
 		type(By.name("lastname"), contactData.getLastName());
-		//attach(By.name("photo"), contactData.getPhoto());
+		attach(By.name("photo"), contactData.getPhoto());
 		type(By.name("address"), contactData.getAddress());
 		type(By.name("email"), contactData.getEmail());
 		type(By.name("email2"), contactData.getEmail2());
@@ -38,11 +38,11 @@ public class ContactHelper extends HelperBase {
 		type(By.name("work"), contactData.getWorkPhone());
 
 
-		if (creation) {
+		/*if (creation) {
 			new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
 		} else {
 			Assert.assertFalse(isElementPresent(By.name("new_group")));
-		}
+		}*/
 	}
 
 

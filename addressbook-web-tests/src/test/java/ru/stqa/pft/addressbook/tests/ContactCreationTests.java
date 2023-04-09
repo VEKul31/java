@@ -8,6 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,9 +28,9 @@ public class ContactCreationTests extends TestBase {
 	public Iterator<Object[]> validContactsFromCsv() {
 		File photo = new File("src/test/resources/stru.png");
 		List<Object[]> list = new ArrayList<Object[]>();
-		list.add(new Object[] {new ContactData().withName("name").withLastName("last").withPhoto(photo).withMobilePhone("123").withEmail("test@google.com").withGroup("test1")});
-		list.add(new Object[] {new ContactData().withName("name2").withLastName("last2").withPhoto(photo).withMobilePhone("1234").withEmail("tes@google.com").withGroup("test2")});
-		list.add(new Object[] {new ContactData().withName("name3").withLastName("last3").withPhoto(photo).withMobilePhone("12345").withEmail("te@google.com").withGroup("test3")});
+		list.add(new Object[] {new ContactData().withName("name").withLastName("last").withPhoto(photo).withMobilePhone("123").withEmail("test@google.com")});
+		list.add(new Object[] {new ContactData().withName("name2").withLastName("last2").withPhoto(photo).withMobilePhone("1234").withEmail("tes@google.com")});
+		list.add(new Object[] {new ContactData().withName("name3").withLastName("last3").withPhoto(photo).withMobilePhone("12345").withEmail("te@google.com")});
 		return list.iterator();
 	}
 	@DataProvider
@@ -65,9 +66,10 @@ public class ContactCreationTests extends TestBase {
 	}
 
 	@Test(dataProvider = "validContactsFromJson")
-	public void testContactCreationTests(ContactData contact) {
-		app.goTo().homePage();
+	public void testContactCreation(ContactData contact) {
 		Contacts before = app.db().contacts();
+		File photo = new File("src/test/resources/stru.png");
+		contact.withPhoto(photo);
 		app.goTo().contactPage();
 		app.contact().create(contact);
 		assertThat(app.contact().getContactCount(),equalTo(before.size() +1));

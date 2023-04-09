@@ -19,8 +19,7 @@ public class ContactPhoneTests extends TestBase {
 			app.goTo().contactPage();
 			app.contact().create(new ContactData().withName("name").withLastName("last").withAddress("почтовый адрес")
 						.withEmail("123").withEmail2("234").withEmail3("345")
-						.withHomePhone("111").withMobilePhone("222").withWorkPhone("333")
-						.withGroup("test1"));
+						.withHomePhone("111").withMobilePhone("222").withWorkPhone("333"));
 		}
 	}
 
