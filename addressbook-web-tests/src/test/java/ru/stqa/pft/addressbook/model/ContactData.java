@@ -55,9 +55,12 @@ public class ContactData {
 	@Column(name = "work")
 	@Type(type = "text")
 	private String workPhone;
+
 	@Expose
 	@Transient
 	private String group;
+
+
 	@Column(name = "photo")
 	@Type(type = "text")
 	private String photo;

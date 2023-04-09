@@ -12,10 +12,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactPhoneTests extends TestBase {
 
+
 	@BeforeMethod
 	public void ensurePreconditions() {
-		app.goTo().homePage();
-		if (app.contact().all().size() == 0) {
+		if (app.db().contacts().size() == 0) {
 			app.goTo().contactPage();
 			app.contact().create(new ContactData().withName("name").withLastName("last").withAddress("почтовый адрес")
 						.withEmail("123").withEmail2("234").withEmail3("345")
