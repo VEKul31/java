@@ -57,11 +57,6 @@ public class ContactHelper extends HelperBase {
 		attach((By.name("photo")), contactData.getPhoto());
 	}
 
-	public void selectContactById(int id) {
-		wd.findElement(By.cssSelector("input[value ='" + id +"']")).click();
-
-	}
-
 	public void deleteSelectedContacts() {
 		click(By.xpath("//input[@value='Delete']"));
 		wd.switchTo().alert().accept();
@@ -84,15 +79,13 @@ public class ContactHelper extends HelperBase {
 	}
 
 	public void modify(ContactData contact) {
-		selectContactById(contact.getId());
-		initContactModification(contact.getId());
-		fillContactForm(contact, false);
+		initContactModificationById(contact.getId());
+		fillContactForm(contact, true);
 		updateContactModification();
 		contactCache = null;
 		returnToHomePage();
 	}
-
-
+	
 	public void delete(ContactData contact) {
 		selectContactById(contact.getId());
 		deleteSelectedContacts();
@@ -158,15 +151,21 @@ public class ContactHelper extends HelperBase {
 	}
 
 	public void initContactModificationById(int id) {
-		WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+		wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+		/*WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
 		WebElement row = checkbox.findElement(By.xpath("./../.."));
 		List<WebElement> cells = row.findElements(By.tagName("td"));
-		cells.get(7).findElement(By.tagName("a")).click();
+		cells.get(7).findElement(By.tagName("a")).click();*/
 
 		//or
 		//wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id)).click();
 		//wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id)).click();
-		//wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id)).click();
+
+	}
+
+	public void selectContactById(int id) {
+		wd.findElement(By.cssSelector("input[value ='" + id +"']")).click();
+
 	}
 
 	public void createBeforeMethod(ContactData contact) {
