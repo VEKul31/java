@@ -85,7 +85,7 @@ public class ContactHelper extends HelperBase {
 		contactCache = null;
 		returnToHomePage();
 	}
-	
+
 	public void delete(ContactData contact) {
 		selectContactById(contact.getId());
 		deleteSelectedContacts();
