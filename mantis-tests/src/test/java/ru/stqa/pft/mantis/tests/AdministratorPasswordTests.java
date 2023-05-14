@@ -8,6 +8,7 @@ import ru.stqa.pft.mantis.model.MailMessage;
 import ru.stqa.pft.mantis.model.User;
 
 import javax.mail.MessagingException;
+import javax.xml.rpc.ServiceException;
 import java.io.IOException;
 import java.util.List;
 
@@ -21,7 +22,8 @@ public class AdministratorPasswordTests extends TestBase {
 	}
 
 	@Test
-	public void testChangeUserPasswordByAdmin() throws IOException, MessagingException {
+	public void testChangeUserPasswordByAdmin() throws IOException, MessagingException, ServiceException {
+		skipIfNotFixed(3);
 		String newPassword = "123abc";
 		app.administrator().loginByAdmin();
 		app.administrator().goToManageUserPage();
