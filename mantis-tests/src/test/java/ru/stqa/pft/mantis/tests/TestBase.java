@@ -8,6 +8,7 @@ import ru.stqa.pft.mantis.appmanager.ApplicationManager;
 
 import java.io.File;
 import javax.xml.rpc.ServiceException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 
@@ -35,6 +36,16 @@ public class TestBase {
 		if (isIssueOpen(issueId)) {
 			throw new SkipException("Ignored because of issue " + issueId);
 		}
+	}
+
+	public void skipIfNotFixedBugify(int issueId) throws IOException, ServiceException {
+		if (isIssueOpenBugify(issueId)) {
+			throw new SkipException("Ignored because of issue " + issueId);
+		}
+	}
+
+	private boolean isIssueOpenBugify(int issueId) throws IOException, ServiceException {
+		return app.rest().isIssueOpen(issueId);
 	}
 
 }

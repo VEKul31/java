@@ -23,7 +23,8 @@ public class AdministratorPasswordTests extends TestBase {
 
 	@Test
 	public void testChangeUserPasswordByAdmin() throws IOException, MessagingException, ServiceException {
-		skipIfNotFixed(3);
+		//skipIfNotFixed(3);
+		skipIfNotFixedBugify(345);
 		String newPassword = "123abc";
 		app.administrator().loginByAdmin();
 		app.administrator().goToManageUserPage();
